@@ -1,0 +1,105 @@
+\documentclass[10pt, letterpaper]{article}
+\usepackage{type1cm}
+\usepackage[]{hyperref}
+\usepackage{microtype}%This package brings small typographic improvements such as hanging punctuation and protection from widowed/orphaned lines.
+
+\title{CETR Reciprocating Tribometer Usage Protocol: \\ Terrell Lab}
+\author{Aleks Navratil}
+\date{\today}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Read The Documentation!}
+
+Seriously. There are directions for how to use the CETR on the desktop of the CETR computer in a folder called ``How to use the CETR.'' They are written in conversational English and are extremely easy to understand. Read them! You should also read the CETR's manual, which is in a clear plastic binder and lives on top of the CETR tribometer.
+
+\section{Don't be afraid to ask for help!}
+The CETR is a baffling machine to even the most seasoned scientist. It was designed and built by Russians in the twilight of the Communist era, and it has been improved only barely since then. The CETR design philosophy is aggressively user-unfriendly and the software is half-baked at best. This means it is \emph{totally fine} for you to ask for help. Nobody will judge you for being confused by the CETR. It was designed by inscrutable, unhappy people to confuse you. Ask early, ask often!
+
+\section{Procedure for operation}
+\subsection{Cleaning the slate}
+Always assume that the last user of the machine was completely incompetent and misconfigured \emph{everything.} You must return the machine to a neutral state before you begin to set up your test.
+\begin{enumerate}
+\item Put on gloves to protect your hands from chemicals and the machine from your hands.
+
+\item Dissassemble all components that could touch oil. This means ball holder, ball, oil pan, etc. Clean all of these in an ultrasonic bath of acetone for at least 5 minutes. Wipe everything down with ChemWipes and more acetone.
+
+\item Turn off both switches on the back of the CETR. Close the UMT software and also the UMT test viewer software. If you're feeling ambitious you can reboot the CETR machine.
+
+\item Use the proper load cell calibration file (aka. the one that matches the size of load cell you're using). If you don't know how to do this, look in the folder on the Desktop of the CETR computer called ``How to use the CETR.''
+\end{enumerate}
+
+\subsection{Preparing for the deluge of datafiles you're about to have}
+\begin{enumerate}
+
+\item Make yourself a folder on the Desktop. Make deeply-nested subdirectories inside this to keep your datafiles straight. For instance, if your name is John Smith and you're running steel-on-steel tests, you might have a directory structure like this: Desktop $>$ John Smith $>$ 52100 Steel on 440C Steel $>$ Lubricated Tests $>$ Pennzoil Unformulated $>$ 10N Load $>$ First Test. Each test you run will produce a .tst file, a .env file, and (eventually) a .csv file. It is best if you keep all these files together.
+
+\item Don't ever erase your test data. Even if you think it's bad data, keep in in a subfolder called ``Bad Data.'' Also, don't modify your original datafiles. Instead, make a copy to your laptop/some other machine, and do your data analysis there. Thus, when you erase/break/damage the data, you can always make another copy from your clean source (the CETR computer). 
+\end{enumerate}
+
+\subsection{Set Up Your Test}
+\begin{enumerate}
+\item Unlock the motors by toggling both rocker switches on the back of the CETR. Then, set the slider displacement to the right number of millimeters for your test by turning the mechanical screw under the stage. If you don't know how to do this, ask a PhD student for help.
+
+\item Never touch any test specimen or scientific hardwear without gloves. This means balls, flats, holders, etc. Load your ball in the ball holder and fix the holder into the carriage. 
+
+\item If you're using an oil bath, make sure there is no oil left on the bath holder/stage. Your gloves should have no trace of oil on them after you touch the stage. If there is lingering oil, you are doing sloppy, worthless science.
+
+\item Screw your flat down onto the stage. The motors must be unlocked (if they're not, toggle both rocker switches on the back of the CETR) and spin the slider crank with your hand in order to move the stage/specimen assembly. Examine both extreme positions of your flat, and be sure that the ball won't run out of runway (aka. don't let it fall off your specimen). Reposition your specimen by unscrewing, moving, and re-screwing if necessary, then check again. If the ball slides off your sample, many bad things will happen.
+
+\item Choose ``View $>$ Position Adjustment Panel''. Then hold alt-down arrow on the keyboard to move the carriage down fast. If you ram it into your sample, you will break the machine ($\approx \$50,000$) so be careful. Hold ctrl-down arrow to move slowly.
+
+\item Make a recipe file for the test parameters you want. You'll need to specify load, test duration, reciprocation frequency, humidity, sampling resolution, folder that your data ought to be saved in, and the approach speeds/touch forces of the load cell. This is much easier than it sounds. Just choose ``File $>$ New Recipe'' and fill in the blanks. Don't be afraid to ask for help if you get stuck.
+\end{enumerate}
+
+\subsection{Run Your Test}
+\begin{enumerate}
+\item Toggle both the rocker switches on the back of the CETR to the ``On'' position.
+
+\item Wipe your counterface ball and specimen with acetone/ChemWipe one more time. This cleans up any recently arrived dust or human oil. 
+
+\item Run your recipe by pressing the ``Run Test'' button on the toolbar. Sit there and watch it for a minute because sometimes the CETR inexplicably crashes at this point. 
+
+\item If the stage/slider doesn't reciprocate, you forgot to switch on the motors. Toggle both the rocker switches on the back of the CETR to the ``On'' position. Also, make sure that the ball doesn't run out of runway on the test specimen.
+\end{enumerate}
+
+\subsection{Clean up after your test}
+\begin{enumerate}
+\item Remove your test surfaces and clean with acetone. Also clean the stage, oil bath, ball holder, etc.
+\item Before you remove your ball from the ball holder, you probably want to mark the wear scar by circling it with a sharpie so you can find it for imaging later. Then you can put the marked ball in a small ziploc bag for safekeeping. You should obviously label the outside of the ziploc bag (be tidy. Science is 50\% record keeping).
+\item Switch off the CETR's power by toggling both rocker switches on the back panel of the CETR.
+\item Close the UMT Software.
+\item Do not shut down the UMT computer.
+\end{enumerate}
+
+\subsection{Textify Your Files}
+\begin{enumerate}
+\item The CETR records data to a proprietary binary format that has extension .tst. No software can read this file except the CETR proprietary UMT Test Viewer program. You must use Test Viewer to output .csv files for use in your analysis software (such as Excel, Python, Kaleiograph, etc.)
+
+\item Hint: To save time, only textify the CETR step that contains actual data. In most cases, this is merely step 2. Step 1 is just data from the ball descending and making contact with the flat (ie. not reciprocating yet). Step 2 is where the friction data comes from, so you can safely discard step 1. Read the "How to Textify Your Data.doc" file on the CETR computer at ``Desktop $>$ How to Use the CETR'' for detailed instructions.
+
+\item If you run long tests, you will have too many datapoints for Excel. The lab has a Python script which will make plots of your data for you, thereby saving many hours of frustration in Excel. This script is called ``Master CETR Plotter.py'' and it is on the lab wiki \href{http://etl.wikischolars.columbia.edu/Software}{here}. It's really easy to use and if you read the source code, you'll quickly figure out how to adapt it to your data. It also has the feature that it can batch plot arbitrary amounts of datafiles in arbitrarily deep directories, thereby saving you much opening and closing of files. 
+
+\item Some other handy utilities are also saved in the ``Desktop $>$ Aleks Python Utilities'' folder on the CETR computer. There is a program that extracts .csv files from the folder and puts them on your flashdrive while ignoring the bulky .tst files, and also a program that helpfully deletes certain files in a complicated directory structure. Use these if you want to save time. Or do it manually if you're scared of Python. (Don't be scared. Python is easy and reads almost like English. You can probably learn enough to be dangerous in an hour).
+\end{enumerate}
+
+\section{Common Pitfalls}
+These are the most common errors while using the CETR.
+\subsection{You didn't calculate your own friction coefficient}
+The CETR uses black-magic Russian algorithms to calculate the CoF. Do not trust this. Their CoF is almost always too high. Instead of using their CoF column, you should calculate your own in the most naive possible way (by taking the absolute value of the ratio of downforce to friction force, maybe with a moving average filter to smooth things out). Do this in Excel/Kaleidograph/Sigmaplot/whatever program you use for data analysis. If you're using the ``Master CETR Plotter.py'' script, this is already done for you.
+
+\subsection{You changed the load cell}
+If you change the load cell, your measurements are completely wrong, unless you have followed the long, involved recalibration process. Directions for the long, involved recalibration process are on the desktop of the CETR Computer in a folder called ``How to use the CETR.'' If you don't recalibrate, all your data is garbage.
+
+\subsection{Your units are set wrong}
+You have to set the units to Newtons instead of Kilograms. The directions for how to do this are on the desktop of the CETR Computer in a folder called ``How to use the CETR.'' (Hint: Go to ``Tools $>>$ Options''
+
+\subsection{You didn't clean the grease off your ball}
+The steel counterface balls ship from the manufacturer with a thin (invisible) coating of grease that inhibits corrosion during shipping. You \emph{must} wipe this off with an acetone bath and thorough ChemWipe scrubbing. If you don't do this, all your measurements are wrong. It is \emph{not OK} to introduce a new, mysterious lubricant into your interface. Wipe it off!
+
+
+
+
+
+\end{document}​
